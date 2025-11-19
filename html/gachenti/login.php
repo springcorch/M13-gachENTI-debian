@@ -28,7 +28,6 @@ $data = <<<EOD
 			<p><label for="registro_password2">Repite la Contraseña</label> <input type="password" name="password2" id="registro_password2" /></p>
 			<p><label for="registro_birthdate">Fecha de Nacimiento</label> <input type="date" name="birthdate" id="registro_birthdate" /></p>
 			<p><label for="registro_funds">Fondos Iniciales</label> <input type="number" step="0.01" name="funds" id="registro_funds" /></p>
-        	<p><label for="registro_status">Estado</label> <input type="number" name="status" id="registro_status" /></p>
 	
 			<p><input type="submit" value="Registrarse" /></p>
 		</form>

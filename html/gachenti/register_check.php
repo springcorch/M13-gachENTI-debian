@@ -9,7 +9,6 @@ if(
     !isset($_POST["password2"]) ||
     !isset($_POST["birthdate"]) ||
     !isset($_POST["funds"]) ||
-    !isset($_POST["status"])
 	)
 {
 	die("ERROR 1: Formulario no enviado.");
@@ -84,7 +83,8 @@ $password = md5($password);
 //COMPROBACIÓN DE QUE NO EXISTA YA ESTE USUARIO
 $birthdate = $_POST["birthdate"];
 $funds = floatval($_POST["funds"]);
-$status = intval($_POST["status"]);
+$status = 1;
+$id_user_type = 1;
 $registered = date("Y-m-d H:i:s");
 
 $conn = mysqli_connect("localhost", "enti", "enti", "gachenti_db");
@@ -137,12 +137,13 @@ VALUES (
     '{$birthdate}',
     {$funds},
     '{$registered}',
-    {$status}
+    {$status},
+    {$id_user_type}
 );";
 
 $result = mysqli_query($conn, $insert);
 
-if(!$ok){
+if(!$result){
 	die("ERROR DB 4: Error al insertar el usuario.");
 }
 

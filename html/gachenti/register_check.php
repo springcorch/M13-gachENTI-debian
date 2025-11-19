@@ -8,7 +8,7 @@ if(
     !isset($_POST["password"]) ||
     !isset($_POST["password2"]) ||
     !isset($_POST["birthdate"]) ||
-    !isset($_POST["funds"]) ||
+    !isset($_POST["funds"])
 	)
 {
 	die("ERROR 1: Formulario no enviado.");
@@ -127,7 +127,7 @@ if(mysqli_num_rows($result) > 0){
 }
 
 //INSERTAR DATOS EN MYSQL
-$insert = "INSERT INTO users(name, surname, username, email, password, birthdate, funds, registered, status)
+$insert = "INSERT INTO users(name, surname, username, email, password, birthdate, funds, registered, status, id_user_type)
 VALUES (
     '{$name}',
     '{$surname}',
@@ -147,6 +147,11 @@ if(!$result){
 	die("ERROR DB 4: Error al insertar el usuario.");
 }
 
-echo "Usuario registrado correctamente.";
+$new_id = mysqli_insert_id($conn);
+
+session_start();
+$_SESSION["id_user"] = $new_id;
+header("Location: dashboard.php");
+exit();
 
 ?>

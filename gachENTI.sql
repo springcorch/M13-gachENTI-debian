@@ -92,39 +92,3 @@ CREATE TABLE logs (
     FOREIGN KEY (id_user_buyer) REFERENCES users(id_user),
     FOREIGN KEY (id_card) REFERENCES cards(id_card)
 );
-
--- Tipos de usuario
-INSERT INTO user_types(type) VALUES
-('normal'),
-('admin'),
-('root');
-
--- Usuario root
-INSERT INTO users(name, surname, username, email, password, birthdate, funds, registered, status, id_user_type)
-VALUES ('enti', 'enti', 'enti', 'enti@gachenti.com', MD5('enti'), '2000-01-01', 1000.00, NOW(), 1, 3);
-
--- Tipos de cartas
-INSERT INTO card_types(type, abbrev, description, color) VALUES
-('Charlatan', 'YAP', 'Cartas que le gustan hablar en clase', 'FF4500'),
-('Maquiavolico', 'EVIL', 'Cartas que se respetan en clase', '32CD32'),
-('Callado', 'QUIET', 'Cartas que no hablan mucho en clase', '1E90FF');
-
--- Rarezas de cartas
-INSERT INTO card_rarities(rarity, abbrev, description, probability) VALUES
-('comun', 'COM', 'carta comun', 60),
-('rara', 'RAR', 'carta rara', 30),
-('epica', 'EPI', 'carta epica', 10);
-
--- Plantillas de cartas
-INSERT INTO card_templates(card, initial_price, description, image, id_card_type, id_card_rarity) VALUES
-('Rafa Laguna', 100.00, 'Carta epica de Rafa Laguna', 'rafa_laguna.png', 1, 3),
-('Richard', 50.00, 'Carta rara de Richard', 'richard_shiny.png', 2, 2),
-('Alberto Alegre', 20.00, 'Carta comun de Alberto Alegre', 'alberto_alegre.png', 3, 1);
-
--- Cartas a partir de plantillas
-INSERT INTO cards(price, discount, on_sale, state, id_card_template) VALUES
-(100.00, 0, 1, 1, 1),
-(100.00, 0, 1, 1, 1),
-(50.00, 0, 1, 1, 2),
-(50.00, 0, 1, 1, 2),
-(20.00, 0, 1, 1, 3);
